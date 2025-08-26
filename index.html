@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body class="bg-cover bg-center bg-no-repeat transition-background duration-1000">
+
+    <div id="app-wrap" class="relative flex flex-col min-h-screen p-4 sm:p-8">
+        <div class="absolute inset-0 bg-black/40 dark:bg-black/60 transition-colors duration-500 z-0"></div>
+
+        <div class="absolute top-6 left-6 z-20"> 
+            <a href="#" id="home-btn" title="Go to the home page">
+                <svg class="home-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M10,20V14H14V20H19V12H22L12,3L2,12H5V20H10Z" /></svg>
+            </a>
+        </div>
+        
+        <div class="absolute top-6 right-6 z-20 flex items-center space-x-4">
+            <label for="lang-toggle" class="flex items-center cursor-pointer">
+                <div class="relative">
+                    <input type="checkbox" id="lang-toggle" class="sr-only">
+                    <div class="block bg-gray-600 w-14 h-8 rounded-full"></div>
+                    <div class="dot absolute left-1 top-1 bg-white w-6 h-6 rounded-full transition-transform"></div>
+                    <span class="absolute text-xs font-bold text-white tracking-widest" style="left: 6px; top: 7px;">EN</span>
+                    <span class="absolute text-xs font-bold text-white tracking-widest" style="right: 6px; top: 7px;">HI</span>
+                </div>
+            </label>
+            <label for="theme-toggle" class="flex items-center cursor-pointer">
+                <div class="relative">
+                    <input type="checkbox" id="theme-toggle" class="sr-only">
+                    <div class="block bg-gray-600 w-14 h-8 rounded-full"></div>
+                    <div class="dot absolute left-1 top-1 bg-white w-6 h-6 rounded-full transition-transform"></div>
+                </div>
+            </label>
+        </div>
+
+        <header class="relative z-10 w-full max-w-lg mx-auto flex justify-between items-center mb-8"></header>
+
+        <main class="relative z-10 text-center text-white flex-grow flex flex-col items-center justify-center content">
+            
+            <h1 id="welcome-heading" class="welcome-title gradient-text">Welcome, User!</h1>
+
+            <section class="location mb-4">
+                <div class="city text-4xl sm:text-5xl font-bold tracking-wider gradient-text">Discover the Weather</div>
+                <div class="date text-lg sm:text-xl gradient-text">Your forecast awaits</div>
+                <div class="time text-lg sm:text-xl font-semibold gradient-text">...</div>
+            </section>
+            
+            <section class="current">
+                <div class="temp text-7xl sm:text-9xl font-extrabold my-2 gradient-text">
+                    <div class="loading-dots">
+                        <span></span><span></span><span></span><span></span>
+                    </div>
+                </div>
+                <div class="weather text-3xl sm:text-4xl font-semibold italic gradient-text"></div>
+                <div class="hi-low text-xl sm:text-2xl mt-2 font-medium gradient-text"></div>
+                <div class="extra-info mt-6 flex justify-center space-x-6">
+                    <div class="pressure">
+                        <span class="font-bold text-2xl gradient-text">...</span>
+                        <p class="text-sm text-white/80">Pressure</p>
+                    </div>
+                    <div class="humidity">
+                        <span class="font-bold text-2xl gradient-text">...</span>
+                        <p class="text-sm text-white/80">Humidity</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="city-description" class="mt-8 p-4 bg-black/20 dark:bg-black/30 rounded-lg max-w-xl text-left text-base font-medium backdrop-blur-sm"></section>
+
+            <section class="search-section mt-8 w-full max-w-md mx-auto">
+                <div class="relative">
+                    <input type="text" autocomplete="off" class="search-box w-full p-4 rounded-xl bg-white/20 dark:bg-black/20 placeholder-white/70 text-white focus:outline-none focus:bg-white/40 dark:focus:bg-black/40 transition-all duration-300 shadow-lg text-center text-xl" placeholder="Search for a city...">
+                    <div id="suggestions-box" class="absolute top-full left-0 right-0 mt-2 bg-white/20 backdrop-blur-md rounded-lg overflow-hidden shadow-lg hidden">
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="relative z-10 text-center text-white/60 mt-auto pt-8">
+            <p>Powered by OpenWeatherMap API&reg; | Created and developed by Sarvesh &copy; 2025</p>
+        </footer>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

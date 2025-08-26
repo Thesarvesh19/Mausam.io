@@ -1,0 +1,140 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.transition-background {
+    transition: background-image 1s ease-in-out;
+}
+
+main.content {
+    opacity: 0;
+    transform: translateY(25px);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+main.content.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.gradient-text {
+    background-image: linear-gradient(to right, #1f2937, #374151);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    transition: background-image 0.5s ease;
+}
+
+html.dark .gradient-text {
+    background-image: linear-gradient(to right, #7dd3fc, #a78bfa);
+}
+
+.welcome-title {
+    font-size: 3.5rem; /* 56px */
+    font-weight: 800; /* Extra-bold */
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.loading-dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%; /* Ensure it takes up the space */
+}
+.loading-dots span {
+    display: inline-block;
+    width: 1rem;  /* 16px */
+    height: 1rem; /* 16px */
+    margin: 0 0.25rem; /* 4px */
+    border-radius: 50%;
+    background-color: #fff; /* White dots */
+    opacity: 0.8;
+    animation: dot-bounce 1.4s infinite ease-in-out both;
+}
+.loading-dots span:nth-child(1) { animation-delay: -0.32s; }
+.loading-dots span:nth-child(2) { animation-delay: -0.16s; }
+
+@keyframes dot-bounce {
+    0%, 80%, 100% {
+        transform: scale(0.6);
+        opacity: 0.6;
+    }
+    40% {
+        transform: scale(1.0);
+        opacity: 1;
+    }
+}
+
+#city-description {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    transition-delay: 0.2s;
+    max-height: 0;
+    overflow: hidden;
+}
+
+#city-description.visible {
+    opacity: 1;
+    transform: translateY(0);
+    max-height: 300px;
+}
+
+/* Updated ID for theme toggle dot */
+#theme-toggle:checked ~ .dot {
+    transform: translateX(100%);
+    background-color: #48bb78;
+}
+
+/* NEW: Styles for Language Toggle */
+#lang-toggle:checked ~ .dot {
+    transform: translateX(100%);
+    background-color: #f6ad55; /* A distinct color for language toggle */
+}
+
+/* NEW: Position text inside language toggle */
+#lang-toggle ~ div .absolute.text-xs:first-of-type {
+    opacity: 1; /* EN is visible by default */
+    transition: opacity 0.2s ease-in-out;
+}
+#lang-toggle:checked ~ div .absolute.text-xs:first-of-type {
+    opacity: 0; /* Hide EN when HI is selected */
+}
+#lang-toggle ~ div .absolute.text-xs:last-of-type {
+    opacity: 0; /* HI is hidden by default */
+    transition: opacity 0.2s ease-in-out;
+}
+#lang-toggle:checked ~ div .absolute.text-xs:last-of-type {
+    opacity: 1; /* Show HI when HI is selected */
+}
+
+
+.suggestion-item {
+    padding: 12px 20px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    font-weight: 500;
+    color: #fff;
+    text-align: left;
+}
+.suggestion-item:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+.suggestion-item:not(:last-child) {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.home-icon {
+    width: 2rem; /* 32px */
+    height: 2rem; /* 32px */
+    fill: white;
+    opacity: 0.8;
+    transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.home-icon:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
